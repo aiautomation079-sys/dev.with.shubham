@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --color-schematic-bg: #0a0e17;
+  --color-schematic-surface: #0f1520;
+  --color-schematic-card: #111927;
+  --color-schematic-border: #1e2a3a;
+  --color-schematic-border-hover: #2a3f5f;
+  --color-schematic-accent: #3b82f6;
+  --color-schematic-accent-bright: #60a5fa;
+  --color-schematic-amber: #f59e0b;
+  --color-schematic-amber-bright: #fbbf24;
+  --color-schematic-text: #e2e8f0;
+  --color-schematic-text-dim: #64748b;
+  --color-schematic-text-muted: #475569;
+  --color-schematic-green: #10b981;
+  --color-schematic-red: #ef4444;
+  --color-schematic-cyan: #06b6d4;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-schematic-border) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-schematic-bg);
+  color: var(--color-schematic-text);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #fff;
+}
+
+@keyframes grid-scroll {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(40px, 40px); }
+}
+
+@keyframes scan-line {
+  0% { top: -2px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: calc(100% + 2px); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes data-stream {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-grid-scroll {
+  animation: grid-scroll 20s linear infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 2s ease-in-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.corner-markers {
+  position: relative;
+}
+
+.corner-markers::before,
+.corner-markers::after {
+  content: '+';
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-schematic-text-muted);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.corner-markers::before {
+  top: -4px;
+  left: -4px;
+}
+
+.corner-markers::after {
+  bottom: -4px;
+  right: -4px;
+}
